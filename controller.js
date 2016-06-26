@@ -59,8 +59,9 @@ var bc = this;
 bc.count= 0;
 bc.lbs= 0;
 bc.height= 0;
+
 bc.conToMI = function(){
-    bc.count= (bc.lbs / bc.height ^ 2) * 703;
+    bc.count= (bc.lbs / (bc.height ^ 2)) / 703;
  //(Weight in Pounds / (Height in inches^2 ) ) x 703  
 }
 bc.conMiToDim = function(){
