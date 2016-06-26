@@ -1,0 +1,76 @@
+<html ng-app="counter">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body ng-controller="CounterController as cc">
+    <div class="container">
+        <fieldset class="form-group">
+            <label for="exampleSelect1">Example select</label>
+            <select class="form-control" ng-change="activeView = view" ng-model="view">
+      <option value="temp">Temperature Conversion</option>
+      <option value="distance">Large Distance Conversion</option>
+      <option value="weight">Weight COnversion</option>
+      <option value="inches">Inches in Feet</option>
+      <option value="body">Body Mass Index</option>
+      <option value="loan">Loan Calculator</option>
+    </select>
+        </fieldset>
+    </div>
+    <div ng-show="activeView === 'temp'" class="container" ng-controller="TempCon as tc" id="temp">
+        <h1>{{tc.temp}}</h1>
+        <fieldset class="form-group">
+            <div class="form-control"></div>
+            <input class="form-control" type="number" ng-model="tc.temp"/>
+            <button ng-click="tc.fToC()">Ferenheit to Celsius</button>
+            <button ng-click="tc.cToF()">Celsius to Ferenheit</button>
+    </div>
+    <div ng-show="activeView === 'distance'" class="container" ng-controller="LargeDist as ld" id="distance">
+        <h1>{{ld.count}}</h1>
+         <fieldset class="form-group">
+            <div class="form-control"></div>
+            <input class="form-control" type="number" ng-model="ld.count" placeholder="distance"/>
+            <button ng-click="ld.mToK()">Convert To Kilometers</button>
+            <button ng-click="ld.kToM()">Convert To Miles</button>
+    </div>
+    <div ng-show="activeView === 'weight'" class="container" ng-controller="WeightCon as wc" id="weight">
+        <h1>{{wc.count}}</h1>
+          <fieldset class="form-group">
+            <div class="form-control"></div>
+            <input class="form-control" type="number" ng-model="wc.count"/>
+            <button ng-click="wc.lbToKg()">Convert to Kilograms</button>
+            <button ng-click="wc.kgToLb()">Convert To LBS</button>
+    </div>
+    <div ng-show="activeView === 'inches'" class="container" ng-controller="InchCon as ic" id="inches">
+        <h1>{{ic.legth}}</h1>
+          <fieldset class="form-group">
+            <div class="form-control"></div>
+            <input class="form-control" type="number" ng-model="ic.length"/>
+            <button ng-click="ic.fToI()">Convert To Inches</button>
+            <button ng-click="ic.iToF()">Convert To Feet</button>
+    </div>
+    <div ng-show="activeView === 'body'" class="container" ng-controller="BodyCon as bc" id="body-mass">
+        <h1>{{bc.count}}</h1>
+        <fieldset class="form-group">
+            <div class="form-control"></div>
+            <input class="form-control" type="number" ng-model="bc.lbs" placeholder="Your Weight"/>
+            <input class="form-control" type="number" ng-model="bc.height" placeholder="Your Height"/>
+            <button ng-click="bc.conToMI()">Convert To BMI</button>
+            <button ng-click="bc.conMiToDim()">BMI to Dimensions</button>
+    </div>
+    <div ng-show="activeView === 'loan'" class="container" ng-controller="LoanCalc as lcal" id="loan">
+        <h1 ng-intit="lcal.count = 0">{{lcal.count}}</h1>
+          <div class="form-control"></div>
+            <input class="form-control" type="number" ng-model="lcal.amt" placeholder="Amount Borrowed"/>
+             <input class="form-control" type="number" ng-model="lcal.rate" placeholder="% interest"/>
+              <input class="form-control" type="number" ng-model="lcal.years" placeholder="*payed off in this many years"/>
+            <button ng-click="lcal.estimate()">Estimate Payments</button>
+            </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="app.js"></script>
+<script src="controller.js"></script>
+
+</html>
